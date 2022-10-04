@@ -1,5 +1,7 @@
 # one_nav
 
+基于涂山大佬的主题[oneNav简约主题](https://gitee.com/jhjd/one-nav-simple-theme)做了一点点样式修改
+
 ## Project setup
 ```
 npm install
