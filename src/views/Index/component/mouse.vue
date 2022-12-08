@@ -1,5 +1,5 @@
 <template>
-  <div v-show="show" :style="{left:mouseRight.x,top:mouseRight.y}" class="tabar">
+  <div v-show="false" :style="{left:mouseRight.x,top:mouseRight.y}" class="tabar">
     <div @click="addmenu" v-if="islogin">新增目录</div>
     <div v-if="canshow(1)&&islogin" @click="updatemenu">修改目录</div>
     <div v-if="canshow(2)&&islogin" @click="delmenu">删除目录</div>
@@ -128,46 +128,47 @@ export default {
     document.addEventListener("click", (event) => {
       this.show = false;
     })
-    const touch = {
-      isdown: false,
-      time: null,
-    }
-    window.addEventListener("touchstart", (e) => {
-      touch.isdown = true;
-      touch.time = new Date().getTime();
-      touch.time = setTimeout(_ => {
-        this.mouseRight = {
-          x: e.changedTouches[0].clientX + 'px',
-          y: e.changedTouches[0].clientY + 'px'
-        }
-        try {
-          let t = JSON.parse(e.target.attributes.ctype.value)
-          if (t.length > 0) {
-            this.ctype = t;
-          }
-        } catch (e) {
-          this.ctype = []
-        }
-        try {
-          let info = e.target.attributes.cdata.value;
-          this.info = info
-          this.element = e.target
-        } catch (e) {
-        }
-        this.show = true;
-      }, 500)
-    })
-    window.addEventListener("touchend", function () {
-      touch.isdown = false;
-      clearTimeout(touch.time)
-      touch.time = null;
-    })
-    window.addEventListener("touchmove", function () {
-      console.log(1)
-      touch.isdown = false;
-      clearTimeout(touch.time)
-      touch.time = null;
-    })
+    // const touch = {
+    //   isdown: false,
+    //   time: null,
+    // }
+    // window.addEventListener("touchstart", (e) => {
+    //   touch.isdown = true;
+    //   touch.time = new Date().getTime();
+    //   touch.time = setTimeout(_ => {
+    //     this.mouseRight = {
+    //       x: e.changedTouches[0].clientX + 'px',
+    //       y: e.changedTouches[0].clientY + 'px'
+    //     }
+    //     try {
+    //       let t = JSON.parse(e.target.attributes.ctype.value)
+    //       if (t.length > 0) {
+    //         this.ctype = t;
+    //       }
+    //     } catch (e) {
+    //       this.ctype = []
+    //     }
+    //     try {
+    //       let info = e.target.attributes.cdata.value;
+    //       this.info = info
+    //       this.element = e.target
+    //     } catch (e) {
+    //       console.log(e)
+    //     }
+    //     this.show = true;
+    //   }, 500)
+    // })
+    // window.addEventListener("touchend", function () {
+    //   touch.isdown = false;
+    //   clearTimeout(touch.time)
+    //   touch.time = null;
+    // })
+    // window.addEventListener("touchmove", function () {
+    //   console.log(1)
+    //   touch.isdown = false;
+    //   clearTimeout(touch.time)
+    //   touch.time = null;
+    // })
     // 取消主题右键
     // document.querySelector("#root").addEventListener("mousedown", (e) => {
     //   if (e.button === 2) {

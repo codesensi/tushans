@@ -21,7 +21,7 @@ export default {
             event.stopPropagation();
         }, {passive: false})
 
-//监听面触摸滑动事件
+        //监听面触摸滑动事件
         document.querySelector("#root").addEventListener("touchstart", (event) => {
             if (window.scrolllock) return
             let y = event.touches[0].clientY;
@@ -31,7 +31,7 @@ export default {
             }
 
         })
-//页面滑动结束事件
+        //页面滑动结束事件
         document.querySelector("#root").addEventListener("touchend", (event) => {
             if (window.scrolllock) return
             let y = event.changedTouches[0].clientY;
@@ -48,7 +48,7 @@ export default {
                 }
             }
         })
-//阻止冒泡
+        //阻止冒泡
         document.querySelector("#root").addEventListener("touchmove", (e) => {
             e.stopPropagation();
             e.preventDefault()
